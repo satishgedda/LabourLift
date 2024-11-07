@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabourLift</title>
+    <style>
+        /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f9f4; /* Softer light green background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #285943; /* Darker green */
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 0.2em;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #a8e6cf; /* Light green hover effect */
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff; /* White background for sections */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+section:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* Form Styling */
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #285943;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="number"],
+form select,
+form button,
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="tel"]:focus,
+form input[type="number"]:focus,
+form select:focus {
+    border-color: #285943;
+    outline: none;
+}
+
+form button,
+form input[type="submit"] {
+    background-color: #285943;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover,
+form input[type="submit"]:hover {
+    background-color: #a8e6cf;
+}
+
+/* Job Listings Styling */
+#results ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#results ul li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+}
+
+#results ul li:last-child {
+    border-bottom: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #285943;
+    color: white;
+    margin-top: 20px;
+}
+
+footer a {
+    color: #a8e6cf;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #fff;
+}
+h2{
+    text-align: center;
+}
+/* Styling for "Next" Button */
+button#next-to-booking, button#next-to-about {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    background-color: #285943; /* Darker green */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button#next-to-booking:hover, button#next-to-about:hover {
+    background-color: #a8e6cf; /* Light green hover effect */
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LabourLift</h1>
+        <nav>
+            <a href="#job-listings">Job Listings</a>
+            <a href="#booking">Booking</a>
+            <a href="#about">About Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Job Listings Section -->
+        <section id="job-listings">
+            <h2>Avaliable Workers</h2>
+            <form id="job-search">
+                <label for="location">Enter Location:</label>
+                <input type="text" id="location" name="location" required>
+
+                <label for="work-type">Type of Work:</label>
+                <select id="work-type" name="work-type" required>
+                    <option value="farming">Farming</option>
+                    <option value="construction">Construction</option>
+                    <option value="factory">Factory Work</option>
+                    <option value="housekeeping">Housekeeping</option>
+                </select>
+
+                <label for="gender">Gender Requirement:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="both">Both</option>
+                </select>
+
+                <button type="submit">Search</button>
+            </form>
+
+            <div id="results" style="display: none;">
+                <h3>Available Jobs:</h3>
+                <ul id="job-list"></ul>
+            </div>
+
+            <button id="next-to-booking" style="display:none;">Next</button>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" style="display:none;">
+            <h2>Book Your Labours</h2>
+            <form id="booking-form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="place">Place:</label>
+                <input type="text" id="place" name="place" required>
+
+                <label for="contact-number">Contact Number:</label>
+                <input type="tel" id="contact-number" name="contact-number" required>
+
+                <label for="work-type-booking">Type of Work:</label>
+                <select id="work-type-booking" name="work-type-booking" required>
+                    <option value="farming">Farming</option>
+                    <option value="construction">Construction</option>
+                    <option value="factory">Factory Work</option>
+                    <option value="housekeeping">Housekeeping</option>
+                </select>
+
+                <label for="num-workers">Number of Workers Required:</label>
+                <input type="number" id="num-workers" name="num-workers" required>
+
+                <label for="worker-gender">Gender:</label>
+                <select id="worker-gender" name="worker-gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="both">Both</option>
+                </select>
+
+            </form>
+
+            <button id="next-to-about">Next</button>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" style="display:none;">
+            <h2>About LabourLift</h2>
+            <p>LabourLift is dedicated to connecting skilled laborers with farmers and factories. We provide essential benefits, including healthcare, pension plans, and job security for our labor force. Our mission is to empower laborers while meeting the workforce needs of our clients.</p>
+
+            <a href="index.html"> <button id="back-to-home">Back to Job Listings</button> </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact us at <a href="mailto:contact@labourlift.com">contact@labourlift.com</a></p>
+    </footer>
+
+    <script>
+        // JavaScript for handling job listings and booking
+const jobSearchForm = document.getElementById('job-search');
+const resultsDiv = document.getElementById('results');
+const jobList = document.getElementById('job-list');
+const nextToBooking = document.getElementById('next-to-booking');
+const bookingSection = document.getElementById('booking');
+const nextToAbout = document.getElementById('next-to-about');
+const aboutSection = document.getElementById('about');
+
+jobSearchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const location = document.getElementById('location').value;
+    const workType = document.getElementById('work-type').value;
+    const gender = document.getElementById('gender').value;
+
+    jobList.innerHTML = ''; 
+
+    // Define job availability and pricing for each gender category
+    const jobData = {
+        male: [
+            { description: `500 Male Laborers avaliable for ${workType} in ${location}`, price: "₹450 per day", id: 1 },
+        ],
+        female: [
+            { description: `400 Female Laborers avaliable for ${workType} in ${location}`, price: "₹400 per day", id: 1 },
+           
+        ],
+        both: [
+            { description: `500 Male Laborers and 400 Female Laborers avaliable for ${workType} in ${location}`, price: "male:₹450 and female:₹400", id: 1 },
+           
+        ]
+    };
+
+    // Select jobs based on the chosen gender
+    const selectedJobs = jobData[gender];
+
+    // Display each job in the list with price as a selectable option
+    selectedJobs.forEach(job => {
+        const li = document.createElement('li');
+        
+        // Creating a checkbox for selection
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = job.id;
+
+        // Display job description and price
+        li.appendChild(checkbox);
+        li.innerHTML += `${job.description} - <strong>${job.price}</strong>`;
+
+        jobList.appendChild(li);
+    });
+
+    // Show the results and the "Next" button
+    resultsDiv.style.display = 'block';
+    nextToBooking.style.display = 'block';
+});
+
+// Handle the navigation to the booking section
+nextToBooking.addEventListener('click', function() {
+    document.getElementById('job-listings').style.display = 'none';
+    bookingSection.style.display = 'block';
+});
+
+// Handle booking form submission
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Booking Confirmed!');
+});
+
+// Handle navigation to the about section
+nextToAbout.addEventListener('click', function() {
+    bookingSection.style.display = 'none';
+    aboutSection.style.display = 'block';
+});
+
+// Navigate back to the job listings section
+document.getElementById('back-to-home').addEventListener('click', function() {
+    aboutSection.style.display = 'none';
+    document.getElementById('job-listings').style.display = 'block';
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabourLift</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(backimg.jpg); 
+            color: white; 
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.7); 
+            padding: 20px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center; 
+        }
+        nav ul li {
+            display: inline; 
+            margin: 0 15px; 
+        }
+        nav a {
+            text-decoration: none; 
+            color: white; 
+            font-weight: bold; 
+        }
+        .button {
+            display: inline-block; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            background-color: #28a745; 
+            transition: background-color 0.3s; 
+        }
+        .button:hover {
+            background-color: #218838; 
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 30vh;
+        }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: aquamarine;
+        }
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .service-item {
+            background-color: rgba(51, 51, 51, 0.7); 
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            transition: transform 0.3s ease, background-color 0.3s ease; 
+        }
+        .service-item:hover {
+            transform: scale(1.05); 
+            background-color: rgba(40, 167, 69, 0.8); 
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a class="button" href="index.html">Home</a></li>
+                <li><a class="button" href="login.html">Login</a></li>
+                <li><a class="button" href="contact.html">Contact</a></li>
+                <li><a class="button" href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header><hr>
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service-item">
+                <h3>Job Listings</h3>
+                <p>Access a variety of job opportunities for skilled laborers across sectors, including agriculture and manufacturing.</p>
+            </div>
+            <div class="service-item">
+                <h3>Worker Management</h3>
+                <p>LabourLift manages laborer profiles, ensuring efficient tracking of workdays, skills, and availability.</p>
+            </div>
+            <div class="service-item">
+                <h3>Employer Requests</h3>
+                <p>Submit requests for labor through our platform, tailored to your business’s specific needs.</p>
+            </div>
+            <div class="service-item">
+                <h3>Benefits & Support</h3>
+                <p>Our service includes healthcare, pensions, and social benefits to support laborers over the age of 60.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Script Tags -->
+    <script src="script.js"></script>
+</body>
+</html>
